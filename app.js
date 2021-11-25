@@ -41,7 +41,7 @@ app.get("/players/", async (request, response) => {
 )
 });
 //API 2
-app.post("/players",async(request,response)=>{
+app.post("/players/",async(request,response)=>{
     const {playerName,jerseyNumber,role}=request.body
     const postPlayerQuery=`
         INSERT INTO cricket_team (playerName,jerseyNumber,role)
@@ -50,7 +50,7 @@ app.post("/players",async(request,response)=>{
     response,send("Player Added to Team")
 
 //API 3
-app.get("/players/:playerId",async(request,response)=>{
+app.get("/players/:playerId/",async(request,response)=>{
     const {playerId}=request.params
     const getPlayerQuery=`SELECT * FROM cricket_team
         WHERE player_id=${playerId}`
@@ -58,7 +58,7 @@ app.get("/players/:playerId",async(request,response)=>{
     response.send(covertDbIntoResponse(player))
 
 //API 4
-app.put("/players/:playerId",async(request.response)=>{
+app.put("/players/:playerId/",async(request,response)=>{
     const {playerId}=request.params;
     const {playerName,jerseyNumber,role}=request.body
     const updatePlayerQuery=`
@@ -72,7 +72,7 @@ app.put("/players/:playerId",async(request.response)=>{
     response.send ("Player Details Updated")
 })
 //API 5 
-app.delete("/players/:playersId",async(request,response)=>{
+app.delete("/players/:playersId/",async(request,response)=>{
     const {playerId}=request.params;
     const deletePlayerQuery=`
     DELETE FROM cricket_team
